@@ -1,0 +1,43 @@
+# Clever Chef
+
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+## Introduction
+Clever Chef is ...
+
+## Developers
+- Alexander Bossert - Frontend
+- Luca von Kannen - Backend
+- Leonard Laisé - Frontend and backend
+- Samuel Riester - Frontend
+
+## Installation
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/yourusername/cleverchef.git
+    ```
+2. Navigate to the project directory:
+    ```sh
+    cd cleverchef
+    ```
+3. Install dependencies:
+    ```sh
+    npm install
+    ```
+
+## Usage
+1. Start the application:
+    ```sh
+    npm start
+    ```
+2. Open your browser and go to `http://localhost:3000`.
+
+## Contact
+For any inquiries, please contact [sr185@hdm-stuttgart.de](mailto:yourname@domain.com).

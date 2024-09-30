@@ -24,7 +24,11 @@ Clever Chef is ...
     ```
 
 ## Usage
-1. Start the application:
+1. For developers:
+    ```sh
+    npm run dev
+    ```
+2. For users:
     ```sh
     npm start
     ```

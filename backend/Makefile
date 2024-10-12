@@ -36,14 +36,16 @@ clean:
 
 # Live Reload
 watch:
-	@powershell -ExecutionPolicy Bypass -Command "if (Get-Command air -ErrorAction SilentlyContinue) { \
-		air; \
-		Write-Output 'Watching...'; \
-	} else { \
-		Write-Output 'Installing air...'; \
+watch:
+	@if command -v air >/dev/null 2>&1; then \
+		echo "Running air.sh..."; \
+		./air.sh; \
+	else \
+		echo "Installing air..."; \
 		go install github.com/air-verse/air@latest; \
-		air; \
-		Write-Output 'Watching...'; \
-	}"
+		echo "Running air.sh..."; \
+		./air.sh; \
+	fi
+
 
 .PHONY: all build run test clean watch docker-run docker-down itest

@@ -1,10 +1,14 @@
 # Project backend
 
-One Paragraph of project description goes here
+CleverChef is blablablablablablablabla
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+To setup the project just use the build command. Not really hard tbh :/ 
+
+
+## Todo's
+This would be pretty nice to have: https://github.com/janpfeifer/gonb but also not really necessary
 
 ## MakeFile
 

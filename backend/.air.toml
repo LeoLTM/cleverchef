@@ -1,10 +1,11 @@
-root = "."
+root = "./"
 testdata_dir = "testdata"
 tmp_dir = "tmp"
 
 [build]
   args_bin = []
-  bin = ".\\main.exe"
+  #the parsing of the main.exe seems to be broken on windows when you use the tml file. Use the air.sh script instead!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  bin = "main.exe"
   cmd = "make build"
   delay = 1000
   exclude_dir = ["assets", "tmp", "vendor", "testdata"]

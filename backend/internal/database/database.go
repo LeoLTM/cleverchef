@@ -51,3 +51,20 @@ func (s *service) Health() map[string]string {
 		"message": "It's healthy",
 	}
 }
+
+func (s *service) CreateDatabase(ctx context.Context, dbName string) error {
+	err := s.db.Database(dbName).CreateCollection(ctx, "users")
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *service) CreateUser(ctx context.Context, user User) error {
+	collection := s.db.Database("test").Collection("users")
+	_, err := collection.InsertOne(ctx, user)
+	if err != nil {
+		return err
+	}
+	return nil
+}

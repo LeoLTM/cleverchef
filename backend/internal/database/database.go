@@ -52,19 +52,20 @@ func (s *service) Health() map[string]string {
 	}
 }
 
-func (s *service) CreateDatabase(ctx context.Context, dbName string) error {
-	err := s.db.Database(dbName).CreateCollection(ctx, "users")
-	if err != nil {
-		return err
-	}
-	return nil
+func (s *service) CreateDatabase(ctx context.Context, dbName string) (*mongo.Database, error) {
+	db := s.db.Database(dbName)
+	// MongoDB creates a database lazily, only when the first collection is created
+	return db, nil
 }
 
-func (s *service) CreateUser(ctx context.Context, user User) error {
-	collection := s.db.Database("test").Collection("users")
-	_, err := collection.InsertOne(ctx, user)
+func (s *service) CreateCollection(ctx context.Context, db *mongo.Database, collectionName string) error {
+	// Check if the collection exists by trying to create it
+	err := db.CreateCollection(ctx, collectionName)
 	if err != nil {
+		log.Printf("Failed to create collection: %v", err)
 		return err
 	}
+
+	log.Printf("Collection %s created in database %s", collectionName, db.Name())
 	return nil
 }

@@ -35,8 +35,9 @@ func gracefulShutdown(apiServer *http.Server) {
 }
 
 func main() {
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
-	ourServer := server.NewServer()
+	ourServer := server.NewServer(true)
 
 	go gracefulShutdown(ourServer)
 

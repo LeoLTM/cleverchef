@@ -1,11 +1,33 @@
-import Image from "next/image";
+"use client";
+
+import TopAppBar from "@/components/ui/TopAppBar";
+import { BetweenHorizonalStart, Pencil } from "lucide-react";
 
 export default function Home() {
+  const handleAddMeal = () => {
+    alert("Handle Add Meal");
+  };
+  const handleEditMealPlan = () => {
+    alert("Handle Edit Meal Plan");
+  };
+
   return (
-    <div className="">
-      <main className="">
-        <p>Profilinhalt hier</p>
-      </main>
-    </div>
+    <>
+      <TopAppBar
+        title="Meal Plan"
+        rightIcons={[
+          {
+            icon: <BetweenHorizonalStart />,
+            onClick: handleAddMeal,
+            label: "Add Meal",
+          },
+          {
+            icon: <Pencil />,
+            onClick: handleEditMealPlan,
+            label: "Edit Meal Plan",
+          },
+        ]}
+      />
+    </>
   );
 }

@@ -1,90 +1,57 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { ChevronLeft, Bell, Search, Settings } from "lucide-react";
+import { User } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+interface RightIconProps {
+  icon: React.ReactNode;
+  onClick: () => void;
+  label: string;
+}
 
 interface TopAppBarProps {
   title: string;
-  leftText?: string;
-  rightIcons?: Array<"bell" | "search" | "settings">;
-  onLeftTextClick?: () => void;
-  onRightIconClick?: (icon: "bell" | "search" | "settings") => void;
+  showProfile?: boolean;
+  rightIcons?: RightIconProps[];
+  isSticky?: boolean;
 }
 
 export default function TopAppBar({
   title,
-  leftText,
+  showProfile = true,
   rightIcons = [],
-  onLeftTextClick,
-  onRightIconClick,
+  isSticky = true,
 }: TopAppBarProps) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const [canGoBack, setCanGoBack] = useState(false);
-
-  useEffect(() => {
-    setCanGoBack(window.history.length > 1);
-  }, [pathname]);
-
-  const handleBack = () => {
-    router.back();
+  const onProfileClick = () => {
+    alert("Profile clicked");
   };
-
-  const iconComponents = {
-    bell: Bell,
-    search: Search,
-    settings: Settings,
-  };
-
   return (
-    <div className="flex items-center justify-between px-4 h-12 bg-white border-b border-gray-200">
+    <div
+      className={`flex items-center justify-between px-4 h-14 bg-background border-b border-border ${
+        isSticky ? "sticky top-0 left-0 right-0 z-50" : ""
+      }`}
+    >
       <div className="w-1/3 flex items-center">
-        {canGoBack ? (
-          <Button
-            variant="ghost"
-            size="sm"
-            className="p-0"
-            onClick={handleBack}
-          >
-            <ChevronLeft className="h-6 w-6" />
-            <span className="sr-only">Back</span>
-          </Button>
-        ) : (
-          <Button
-            variant="ghost"
-            size="sm"
-            className="p-0"
-            onClick={onLeftTextClick}
-          >
-            <span className="text-sm font-medium">{leftText}</span>
+        {showProfile && (
+          <Button variant="ghost" size="icon" onClick={onProfileClick}>
+            <User className="h-6 w-6" />
+            <span className="sr-only">Profile</span>
           </Button>
         )}
       </div>
-      <div
-        className={`flex-1 text-center font-semibold ${
-          canGoBack ? "" : "text-left ml-4"
-        }`}
-      >
-        {title}
-      </div>
+      <div className={`flex-1 text-center font-semibold`}>{title}</div>
       <div className="w-1/3 flex justify-end space-x-2">
-        {rightIcons.map((iconName, index) => {
-          const IconComponent = iconComponents[iconName];
-          return (
-            <Button
-              key={index}
-              variant="ghost"
-              size="sm"
-              className="p-1"
-              onClick={() => onRightIconClick && onRightIconClick(iconName)}
-            >
-              <IconComponent className="h-5 w-5" />
-              <span className="sr-only">{iconName}</span>
-            </Button>
-          );
-        })}
+        {rightIcons.slice(0, 3).map((iconProps, index) => (
+          <Button
+            key={index}
+            variant="ghost"
+            size="icon"
+            onClick={iconProps.onClick}
+          >
+            {iconProps.icon}
+            <span className="sr-only">{iconProps.label}</span>
+          </Button>
+        ))}
       </div>
     </div>
   );

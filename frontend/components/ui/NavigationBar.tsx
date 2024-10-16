@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Salad, ShoppingCart, Truck } from "lucide-react";
+import { NotepadText, Salad, ShoppingCart, Truck } from "lucide-react";
 
 const tabs = [
-  { name: "Home", href: "/", icon: Home },
+  { name: "Meal Plan", href: "/", icon: NotepadText },
   { name: "Recipes", href: "/recipes", icon: Salad },
   { name: "Shopping List", href: "/shoppingList", icon: ShoppingCart },
-  { name: "Delivery", href: "/delivery", icon: Truck },
 ];
 
 export default function Tabbar() {

@@ -2,6 +2,7 @@
 
 import TopAppBar from "@/components/ui/TopAppBar";
 import { BetweenHorizonalStart, Pencil } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Home() {
   const handleAddMeal = () => {
@@ -28,6 +29,23 @@ export default function Home() {
           },
         ]}
       />
+
+      <Tabs defaultValue="this-week" className="flex w-full flex-col">
+        <TabsList className="flex w-full">
+          <TabsTrigger value="this-week" className="flex-1">
+            This Week
+          </TabsTrigger>
+          <TabsTrigger value="next-week" className="flex-1">
+            Next Week
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="this-week" className="w-full">
+          This week yeah
+        </TabsContent>
+        <TabsContent value="next-week" className="w-full">
+          Next week nooo
+        </TabsContent>
+      </Tabs>
     </>
   );
 }

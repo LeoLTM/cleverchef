@@ -29,9 +29,13 @@ Clever Chef is ...
 ## Usage
 
 1. For developers:
+   ```
+   cd frontend
+   ```
    ```sh
    npm run dev
    ```
+   - To install Shadcn components, make sure to first change directory into the frontend folder (cd frontend)
 2. For users:
    ```sh
    npm start

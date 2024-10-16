@@ -27,8 +27,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="">
-        <main className="bg-neutral-100">{children}</main>
+      <body className="bg-neutral-100">
+        <main className="">{children}</main>
         <NavigationBar />
       </body>
     </html>

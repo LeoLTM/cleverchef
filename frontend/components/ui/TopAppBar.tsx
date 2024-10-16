@@ -39,7 +39,7 @@ export default function TopAppBar({
           </Button>
         )}
       </div>
-      <div className={`flex-1 text-center font-semibold`}>{title}</div>
+      <div className={`flex-1 text-center`}>{title}</div>
       <div className="w-1/3 flex justify-end space-x-2">
         {rightIcons.slice(0, 3).map((iconProps, index) => (
           <Button

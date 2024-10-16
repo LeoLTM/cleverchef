@@ -21,7 +21,9 @@ export default function Tabbar() {
             <Link
               href={tab.href}
               className={`flex flex-col items-center py-2 ${
-                pathname === tab.href ? "text-green-600" : "text-gray-500"
+                pathname === tab.href
+                  ? "text-green-600 font-bold"
+                  : "text-gray-500"
               }`}
             >
               <tab.icon className="w-6 h-6" />

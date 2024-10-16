@@ -3,6 +3,7 @@
 import TopAppBar from "@/components/ui/TopAppBar";
 import { BetweenHorizonalStart, Pencil } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import DynamicButton from "@/components/ui/DynamicButton";
 
 export default function Home() {
   const handleAddMeal = () => {
@@ -29,7 +30,6 @@ export default function Home() {
           },
         ]}
       />
-
       <Tabs defaultValue="this-week" className="flex w-full flex-col">
         <TabsList className="flex w-full">
           <TabsTrigger value="this-week" className="flex-1">
@@ -46,6 +46,16 @@ export default function Home() {
           Next week nooo
         </TabsContent>
       </Tabs>
+      <div className="h-96 border-green-500 border-2 my-4">Spacer</div>
+      <DynamicButton primaryLabel="Add Meal" primaryOnClick={handleAddMeal} />;
+      <DynamicButton
+        primaryLabel="Add Meal"
+        primaryOnClick={handleAddMeal}
+        secondaryLabel="Edit Meal Plan"
+        secondaryOnClick={handleEditMealPlan}
+        showSecondaryButton
+      />
+      ;
     </>
   );
 }

@@ -5,6 +5,7 @@ import { RecipeCard } from "@/components/ui/RecipeCard";
 import TopAppBar from "@/components/ui/TopAppBar";
 import SearchBar from "@/components/ui/SearchBar";
 import { ArrowDownUp, SlidersHorizontal } from "lucide-react";
+import TypicalTabBar from "@/components/ui/TypicalTabBar";
 
 export default function RecipesPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -106,27 +107,30 @@ export default function RecipesPage() {
           },
         ]}
       />
-      <div className="p-4 md:p-8">
+
+      <div className="sticky top-14 bg-white z-10 shadow-xl">
         <SearchBar
           searchText="Find recipes"
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
-        <main className="grid grid-cols-2 gap-4">
-          {filteredRecipes.map((recipe) => (
-            <RecipeCard
-              key={recipe.id}
-              id={recipe.id}
-              image={recipe.image}
-              title={recipe.title}
-              time={recipe.time}
-              healthScore={recipe.healthScore}
-              rating={recipe.rating}
-              costPerServing={recipe.costPerServing}
-            />
-          ))}
-        </main>
+        <TypicalTabBar />
       </div>
+
+      <main className="grid grid-cols-2 gap-4 pt-4">
+        {filteredRecipes.map((recipe) => (
+          <RecipeCard
+            key={recipe.id}
+            id={recipe.id}
+            image={recipe.image}
+            title={recipe.title}
+            time={recipe.time}
+            healthScore={recipe.healthScore}
+            rating={recipe.rating}
+            costPerServing={recipe.costPerServing}
+          />
+        ))}
+      </main>
     </div>
   );
 }

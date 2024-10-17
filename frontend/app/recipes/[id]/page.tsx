@@ -41,7 +41,7 @@ export default function RecipeDetails({ params }: { params: { id: string } }) {
       <img
         src={recipe.image}
         alt={recipe.title}
-        className="w-full h-48 object-cover rounded-lg mb-4"
+        className="w-full h-48 object-cover rounded-none mb-4"
       />
 
       <h1 className="text-2xl font-bold mb-2">{recipe.title}</h1>

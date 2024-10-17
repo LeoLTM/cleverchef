@@ -24,7 +24,8 @@ export default function TopAppBar({
   rightIcons = [],
 }: TopAppBarProps) {
   const onProfileClick = () => {
-    alert("Profile clicked");
+    alert("Profile clicked, turn sound on");
+    new Audio("https://www.myinstants.com/media/sounds/rickroll.mp3").play();
   };
   return (
     <div className="flex items-center justify-between px-4 h-14 bg-white border-b border sticky top-0 z-50">

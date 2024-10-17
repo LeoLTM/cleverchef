@@ -1,8 +1,8 @@
 "use client";
 
-import { User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ArrowLeft } from "lucide-react";
 
 interface RightIconProps {
   icon: React.ReactNode;
@@ -11,27 +11,23 @@ interface RightIconProps {
 }
 
 interface TopAppBarProps {
-  title: string;
+  title?: string;
   showProfile?: boolean;
+  showBackButton?: boolean;
   rightIcons?: RightIconProps[];
-  isSticky?: boolean;
 }
 
 export default function TopAppBar({
   title,
   showProfile = true,
+  showBackButton = false,
   rightIcons = [],
-  isSticky = true,
 }: TopAppBarProps) {
   const onProfileClick = () => {
     alert("Profile clicked");
   };
   return (
-    <div
-      className={`flex items-center justify-between px-4 h-14 bg-background border-b border-border ${
-        isSticky ? "sticky top-0 left-0 right-0 z-50" : ""
-      }`}
-    >
+    <div className="flex items-center justify-between px-4 h-14 bg-white border-b border sticky top-0 z-50">
       <div className="w-1/3 flex items-center">
         {showProfile && (
           <Button variant="ghost" size="icon" onClick={onProfileClick}>
@@ -43,6 +39,12 @@ export default function TopAppBar({
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <span className="sr-only">Profile</span>
+          </Button>
+        )}
+        {showBackButton && (
+          <Button variant="ghost" size="icon" onClick={() => history.back()}>
+            <ArrowLeft className="h-6 w-6" />
+            <span className="sr-only">Back</span>
           </Button>
         )}
       </div>

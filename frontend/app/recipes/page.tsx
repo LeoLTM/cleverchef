@@ -4,8 +4,10 @@ import { useState } from "react";
 import { RecipeCard } from "@/components/ui/RecipeCard";
 import TopAppBar from "@/components/ui/TopAppBar";
 import SearchBar from "@/components/ui/SearchBar";
-import { ArrowDownUp, SlidersHorizontal } from "lucide-react";
+import { ArrowDownUp, SlidersHorizontal, Plus } from "lucide-react";
 import TypicalTabBar from "@/components/ui/TypicalTabBar";
+import DynamicButton from "@/components/ui/DynamicButton";
+import NavigationBar from "@/components/ui/NavigationBar";
 
 export default function RecipesPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -90,6 +92,9 @@ export default function RecipesPage() {
   const handleFilter = (): void => {
     alert("Filtering");
   };
+  const handleAddRecipe = (): void => {
+    alert("Add Recipe");
+  };
   const filteredRecipes = recipes.filter((recipe) =>
     recipe.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -131,6 +136,13 @@ export default function RecipesPage() {
           />
         ))}
       </main>
+
+      <DynamicButton
+        primaryIcon={<Plus />}
+        primaryLabel="Add Recipce"
+        primaryOnClick={handleAddRecipe}
+      />
+      <NavigationBar />
     </div>
   );
 }

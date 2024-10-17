@@ -21,7 +21,7 @@ const DynamicButton: React.FC<DynamicButtonProps> = ({
   showSecondaryButton = false,
 }) => {
   return (
-    <div className="flex w-full">
+    <div className="flex w-full fixed bottom-16 ">
       {showSecondaryButton && secondaryLabel && secondaryOnClick ? (
         // Render two buttons if showSecondaryButton is true and secondaryLabel and secondaryOnClick are provided
         <>

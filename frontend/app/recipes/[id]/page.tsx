@@ -3,12 +3,14 @@
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Clock, Users, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import TopAppBar from "@/components/ui/TopAppBar";
 
 // This would typically come from an API or database
 const recipe = {
   id: 1,
   title: "Avocado Toast",
-  image: "/placeholder.svg?height=400&width=600",
+  image:
+    "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   time: "10 min",
   servings: 2,
   calories: 300,
@@ -33,15 +35,8 @@ export default function RecipeDetails({ params }: { params: { id: string } }) {
   const router = useRouter();
 
   return (
-    <div className="p-4 pb-20">
-      <Button
-        variant="ghost"
-        size="icon"
-        className="mb-4"
-        onClick={() => router.back()}
-      >
-        <ArrowLeft className="h-6 w-6" />
-      </Button>
+    <>
+      <TopAppBar showBackButton={true} showProfile={false} />
 
       <img
         src={recipe.image}
@@ -87,6 +82,6 @@ export default function RecipeDetails({ params }: { params: { id: string } }) {
           </li>
         ))}
       </ol>
-    </div>
+    </>
   );
 }

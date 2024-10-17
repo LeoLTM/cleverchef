@@ -11,6 +11,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DynamicButton from "@/components/ui/DynamicButton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import NavigationBar from "@/components/ui/NavigationBar";
 
 export default function Home() {
   const handlePlanNextWeek = () => {
@@ -53,38 +54,30 @@ export default function Home() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="this-week" className="w-full">
-          This week yeah
+          <Alert>
+            <Info className="h-4 w-4" />
+            <AlertTitle>Save 5 hours this week with meal prepping!</AlertTitle>
+            <AlertDescription>
+              By spending 2 hours on Sunday meal prepping, you can save 5 hours
+              during the week. Click the button "Start meal prepping" at the
+              bottom to get started.
+            </AlertDescription>
+          </Alert>
         </TabsContent>
         <TabsContent value="next-week" className="w-full">
-          Next week nooo
+          Next week
         </TabsContent>
       </Tabs>
-      <Alert>
-        <Info className="h-4 w-4" />
-        <AlertTitle>Save 5 hours this week with meal prepping!</AlertTitle>
-        <AlertDescription>
-          By spending 2 hours on Sunday meal prepping, you can save 5 hours
-          during the week. Click the button "Start meal prepping" at the bottom
-          to get started.
-        </AlertDescription>
-      </Alert>
-      <div className="h-96 border-green-500 border-2 my-4">Spacer</div>
       <DynamicButton
         primaryIcon={<CookingPot />}
-        primaryLabel="Add Meal"
-        primaryOnClick={handleAddMeal}
-      />
-      <div className="min-h-2"></div>
-      <DynamicButton
-        primaryIcon={<CookingPot />}
-        primaryLabel="Plan Next Week"
-        primaryOnClick={handlePlanNextWeek}
-        secondaryIcon={<CookingPot />}
-        secondaryLabel="Cook Now"
-        secondaryOnClick={handleCookNow}
+        primaryLabel="Cook Now"
+        primaryOnClick={handleCookNow}
+        secondaryIcon={<NotebookPen />}
+        secondaryLabel="Plan Next Week"
+        secondaryOnClick={handlePlanNextWeek}
         showSecondaryButton={true}
       />
-      ;
+      <NavigationBar />
     </>
   );
 }

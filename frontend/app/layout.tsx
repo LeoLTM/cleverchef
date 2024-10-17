@@ -30,7 +30,6 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-neutral-100">
         <main className="">{children}</main>
-        <NavigationBar />
       </body>
     </html>
   );

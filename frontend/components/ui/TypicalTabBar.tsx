@@ -161,7 +161,10 @@ export default function TypicalTabBar({}: TypicalTabBarProps) {
                   ? "border-b-4 border-black text-black font-bold"
                   : "text-gray-500"
               }`}
-              onClick={() => setSelectedCategory(category.id)}
+              onClick={() => {
+                setSelectedCategory(category.id);
+                alert(`Category ${category.name} clicked`);
+              }}
             >
               {category.icon}
               <span className="text-xs text-center">{category.name}</span>

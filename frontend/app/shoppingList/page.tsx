@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import TopAppBar from "@/components/ui/TopAppBar";
-import { EllipsisVertical, History, Settings, Info } from "lucide-react";
+import {
+  EllipsisVertical,
+  History,
+  Info,
+  Plus,
+  HandCoins,
+  ListChecks,
+} from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Accordion,
@@ -10,6 +17,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import DynamicButton from "@/components/ui/DynamicButton";
+import NavigationBar from "@/components/ui/NavigationBar";
 
 export default function Home() {
   const [selectedTab, setSelectedTab] = useState("home-delivery");
@@ -20,11 +29,17 @@ export default function Home() {
   const handleHistoryClick = () => {
     alert("History Clicked");
   };
-  const handleSettingsClick = () => {
-    alert("Settings Clicked");
+
+  const handleCheckedItemsClick = () => {
+    alert("handleCheckedItemsClick");
   };
-  const handleInfoClick = () => {
-    alert("Info Clicked");
+
+  const handleAddEntry = () => {
+    alert("Add Entry Clicked");
+  };
+
+  const handleCheckout = () => {
+    alert("Checkout Clicked");
   };
 
   const rightIcons =
@@ -43,14 +58,14 @@ export default function Home() {
         ]
       : [
           {
-            icon: <Settings />,
-            onClick: handleSettingsClick,
-            label: "Settings",
+            icon: <ListChecks />,
+            onClick: handleCheckedItemsClick,
+            label: "Checked Items",
           },
           {
-            icon: <Info />,
-            onClick: handleInfoClick,
-            label: "Info",
+            icon: <EllipsisVertical />,
+            onClick: handleOptionsClick,
+            label: "Options",
           },
         ];
 
@@ -72,7 +87,15 @@ export default function Home() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="home-delivery" className="w-full">
-          Home delivery content
+          <DynamicButton
+            primaryIcon={<HandCoins />}
+            primaryLabel="Checkout"
+            primaryOnClick={handleCheckout}
+            secondaryIcon={<Plus />}
+            secondaryLabel="Add Entry"
+            secondaryOnClick={handleAddEntry}
+            showSecondaryButton={true}
+          />
         </TabsContent>
         <TabsContent value="self-purchase" className="w-full">
           <Accordion type="single" collapsible className="w-full">
@@ -97,8 +120,14 @@ export default function Home() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+          <DynamicButton
+            primaryIcon={<Plus />}
+            primaryLabel="Add Entry"
+            primaryOnClick={handleAddEntry}
+          />
         </TabsContent>
       </Tabs>
+      <NavigationBar />
     </>
   );
 }

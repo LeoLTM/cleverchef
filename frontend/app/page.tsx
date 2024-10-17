@@ -1,9 +1,10 @@
 "use client";
 
 import TopAppBar from "@/components/ui/TopAppBar";
-import { BetweenHorizonalStart, Pencil } from "lucide-react";
+import { BetweenHorizonalStart, Pencil, Info } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DynamicButton from "@/components/ui/DynamicButton";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function Home() {
   const handleAddMeal = () => {
@@ -46,6 +47,15 @@ export default function Home() {
           Next week nooo
         </TabsContent>
       </Tabs>
+      <Alert>
+        <Info className="h-4 w-4" />
+        <AlertTitle>Save 5 hours this week with meal prepping!</AlertTitle>
+        <AlertDescription>
+          By spending 2 hours on Sunday meal prepping, you can save 5 hours
+          during the week. Click the button "Start meal prepping" at the bottom
+          to get started.
+        </AlertDescription>
+      </Alert>
       <div className="h-96 border-green-500 border-2 my-4">Spacer</div>
       <DynamicButton primaryLabel="Add Meal" primaryOnClick={handleAddMeal} />;
       <DynamicButton

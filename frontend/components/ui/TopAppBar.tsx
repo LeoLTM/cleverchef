@@ -2,6 +2,7 @@
 
 import { User } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface RightIconProps {
   icon: React.ReactNode;
@@ -34,7 +35,13 @@ export default function TopAppBar({
       <div className="w-1/3 flex items-center">
         {showProfile && (
           <Button variant="ghost" size="icon" onClick={onProfileClick}>
-            <User className="h-6 w-6" />
+            <Avatar>
+              <AvatarImage
+                src="https://media.tenor.com/x8v1oNUOmg4AAAAM/rickroll-roll.gif"
+                alt="@rickroll"
+              />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
             <span className="sr-only">Profile</span>
           </Button>
         )}

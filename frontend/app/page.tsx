@@ -1,17 +1,29 @@
 "use client";
 
 import TopAppBar from "@/components/ui/TopAppBar";
-import { BetweenHorizonalStart, Pencil, Info } from "lucide-react";
+import {
+  BetweenHorizonalStart,
+  Pencil,
+  Info,
+  NotebookPen,
+  CookingPot,
+} from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DynamicButton from "@/components/ui/DynamicButton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function Home() {
+  const handlePlanNextWeek = () => {
+    alert("handlePlanNextWeek");
+  };
+  const handleCookNow = () => {
+    alert("handleCookNow");
+  };
   const handleAddMeal = () => {
-    alert("Handle Add Meal");
+    alert("handleAddMeal");
   };
   const handleEditMealPlan = () => {
-    alert("Handle Edit Meal Plan");
+    alert("handleEditMealPlan");
   };
 
   return (
@@ -57,13 +69,20 @@ export default function Home() {
         </AlertDescription>
       </Alert>
       <div className="h-96 border-green-500 border-2 my-4">Spacer</div>
-      <DynamicButton primaryLabel="Add Meal" primaryOnClick={handleAddMeal} />;
       <DynamicButton
+        primaryIcon={<CookingPot />}
         primaryLabel="Add Meal"
         primaryOnClick={handleAddMeal}
-        secondaryLabel="Edit Meal Plan"
-        secondaryOnClick={handleEditMealPlan}
-        showSecondaryButton
+      />
+      <div className="min-h-2"></div>
+      <DynamicButton
+        primaryIcon={<CookingPot />}
+        primaryLabel="Plan Next Week"
+        primaryOnClick={handlePlanNextWeek}
+        secondaryIcon={<CookingPot />}
+        secondaryLabel="Cook Now"
+        secondaryOnClick={handleCookNow}
+        showSecondaryButton={true}
       />
       ;
     </>

@@ -12,15 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DynamicButton from "@/components/ui/DynamicButton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import NavigationBar from "@/components/ui/NavigationBar";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardDescription,
-  CardTitle,
-  CardFooter,
-} from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
+import ClickableScoreCard from "@/components/ui/ClickableScoreCard";
 
 export default function Home() {
   const handlePlanNextWeek = () => {
@@ -86,60 +78,29 @@ export default function Home() {
         secondaryOnClick={handlePlanNextWeek}
         showSecondaryButton={true}
       />
-      <div className="grid grid-cols-4">
-        <Card x-chunk="dashboard-01-chunk-3">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Now</CardTitle>
-            <Info className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">+573</div>
-            <p className="text-xs text-muted-foreground">
-              +201 since last hour
-            </p>
-          </CardContent>
-        </Card>
+      <div className="grid grid-cols-4 gap-4 ">
+        <ClickableScoreCard
+          scoreTitle="Meal Score"
+          scoreValue={85}
+          footerText="Great job this week!"
+        />
+        <ClickableScoreCard
+          scoreTitle="Grocery Score"
+          scoreValue={70}
+          footerText="You're doing well!"
+        />
 
-        <Card x-chunk="dashboard-01-chunk-3">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Now</CardTitle>
-            <Info className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">+573</div>
-            <p className="text-xs text-muted-foreground">
-              +201 since last hour
-            </p>
-          </CardContent>
-        </Card>
+        <ClickableScoreCard
+          scoreTitle="Waste Score"
+          scoreValue={90}
+          footerText="You're doing great!"
+        />
 
-        <Card x-chunk="dashboard-01-chunk-3">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Now</CardTitle>
-            <Info className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">+573</div>
-            <p className="text-xs text-muted-foreground">
-              +201 since last hour
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-2">
-            <CardDescription>This Week</CardDescription>
-            <CardTitle className="text-4xl">$1,329</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-xs text-muted-foreground">
-              +25% from last week
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Progress value={25} aria-label="25% increase" />
-          </CardFooter>
-        </Card>
+        <ClickableScoreCard
+          scoreTitle="Cost Score"
+          scoreValue={60}
+          footerText="You're doing well!"
+        />
       </div>
 
       <NavigationBar />
